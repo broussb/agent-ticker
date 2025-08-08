@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OOO Agent Ticker</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script defer src="/config.js"></script>
+  <script defer src="/app.js"></script>
+  <style>
+    /* Keep date label fixed on the left; scroll names only inside track */
+    .ticker { display: flex; align-items: center; gap: .75rem; }
+    .ticker__label { flex: 0 0 auto; font-weight: 600; opacity: .85; }
+    .ticker__track { flex: 1 1 auto; min-width: 0; overflow: hidden; position: relative; }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">OOO Agent Ticker</div>
+    <nav>
+      <a href="/admin.html" class="admin-link">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div id="ticker" class="ticker" aria-live="polite">
+      <span class="ticker__label" id="tickerDateLabel">Off —</span>
+      <div class="ticker__track">
+        <div class="ticker__scroll">
+          <span class="ticker__text" id="tickerTextA"></span>
+          <span class="ticker__text" id="tickerTextB" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+    <div id="status" class="status"></div>
+  </main>
+
+  <footer class="footer">
+  </footer>
+  <script>
+    (function(){
+      function fmtDate(){
+        try { return new Date().toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' }); }
+        catch { return new Date().toDateString(); }
+      }
+      function setLabel(){
+        var el = document.getElementById('tickerDateLabel');
+        if (el) el.textContent = 'Off ' + fmtDate() + ':';
+      }
+      setLabel();
+      // refresh label daily at midnight-ish
+      setInterval(setLabel, 60 * 60 * 1000);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OOO Agent Ticker</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script defer src="/config.js"></script>
+  <script defer src="/admin.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">OOO Agent Ticker</div>
+    <nav>
+      <a href="/index.html" class="admin-link">View Ticker</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card" id="authCard">
+      <h2>Supervisor Login</h2>
+      <label for="pin">PIN</label>
+      <input id="pin" type="password" placeholder="Enter PIN" autocomplete="current-password" />
+      <div class="button-row">
+        <button id="loginBtn">Login</button>
+      </div>
+      <div id="authMsg" class="helper"></div>
+    </div>
+
+    <div class="card" id="editorCard" style="display:none;">
+      <h2>Manage OOO Agents</h2>
+      <p class="helper">Enter names separated by commas or line breaks.</p>
+      <label for="names">Names</label>
+      <textarea id="names" placeholder="Name1, Name2, Name3"></textarea>
+
+      <div class="button-row">
+        <button id="saveBtn">Save</button>
+        <button id="clearBtn" class="secondary">Clear</button>
+      </div>
+      <div id="saveMsg" class="helper"></div>
+
+      <h3 style="margin-top:18px;">Preview</h3>
+      <div class="ticker" aria-live="polite">
+        <div class="ticker__track">
+          <span class="ticker__text" id="previewA"></span>
+          <span class="ticker__text" id="previewB" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+  </footer>
+</body>
+</html>

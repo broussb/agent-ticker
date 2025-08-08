@@ -1,0 +1,4 @@
+window.TICKER_CONFIG = {
+  USE_NETLIFY_FUNCTIONS: true,
+
+};
